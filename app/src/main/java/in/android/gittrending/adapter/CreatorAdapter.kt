@@ -1,17 +1,12 @@
 package `in`.android.gittrending.adapter
 
-import `in`.android.gittrending.activity.DetailsActivity
 import `in`.android.gittrending.databinding.ItemCreatorBinding
-import `in`.android.gittrending.databinding.ItemTrendingGitBinding
 import `in`.android.gittrending.viewModel.DetailsVM
-import `in`.android.gittrending.viewModel.TrendingListVM
 import android.app.Activity
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
 class CreatorAdapter(var activity: Activity, var viewModel: DetailsVM) :
     RecyclerView.Adapter<CreatorAdapter.CreatorVH>() {
@@ -33,7 +28,7 @@ class CreatorAdapter(var activity: Activity, var viewModel: DetailsVM) :
 
     override fun onBindViewHolder(holder: CreatorVH, position: Int) {
         holder.view.creatorData = viewModel.dataCreators.value!![position]
-        Picasso.get().load(viewModel.dataCreators.value!![position].avatar)
+        Glide.with(activity).load(viewModel.dataCreators.value!![position].avatar)
             .into(holder.view.userImage)
     }
 
